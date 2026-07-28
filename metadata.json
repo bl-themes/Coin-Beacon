@@ -1,0 +1,6 @@
+{
+  "name": "CoinBeacon",
+  "description": "Navigate the Crypto Market with Confidence. Premium cryptocurrency intelligence platform powered by real-time CoinGecko API and AI insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
