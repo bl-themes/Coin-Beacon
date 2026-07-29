@@ -14,9 +14,12 @@ export async function fetchAIAnalysis(payload: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
-    return json.summary;
+    const contentType = res.headers.get('content-type') || '';
+    if (res.ok && contentType.includes('application/json')) {
+      const json = await res.json();
+      if (json && json.summary) return json.summary;
+    }
+    throw new Error('API not available');
   } catch (err) {
     console.error('AI summary fetch failed:', err);
     return {
