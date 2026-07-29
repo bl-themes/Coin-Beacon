@@ -45,7 +45,6 @@ function setCache<T>(key: string, data: T): void {
 async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 6000): Promise<globalThis.Response> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
-  const apiKey = process.env.COINGECKO_API_KEY || 'CG-K2e3Lda3Byu2PoNuffrssMXr';
   try {
     const response = await fetch(url, {
       ...options,
@@ -53,7 +52,6 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutM
       headers: {
         'Accept': 'application/json',
         'User-Agent': 'CoinBeacon/1.0',
-        ...(apiKey ? { 'x-cg-demo-api-key': apiKey } : {}),
         ...(options.headers || {}),
       },
     });
@@ -94,8 +92,7 @@ app.get('/api/coingecko/global', async (_req: Request, res: ExpressResponse) => 
 app.get('/api/coingecko/coins', async (req: Request, res: ExpressResponse) => {
   const page = Number(req.query.page) || 1;
   const perPage = Math.min(Number(req.query.per_page) || 100, 100);
-  const vsCurrency = String(req.query.vs_currency || 'usd').toLowerCase();
-  const cacheKey = `coins_page_${page}_per_${perPage}_${vsCurrency}`;
+  const cacheKey = `coins_page_${page}_per_${perPage}`;
 
   const cached = getCached(cacheKey, 5 * 60 * 1000); // 5 min
   if (cached) {
@@ -103,7 +100,7 @@ app.get('/api/coingecko/coins', async (req: Request, res: ExpressResponse) => {
   }
 
   try {
-    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${vsCurrency}&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=true&price_change_percentage=7d`;
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=true&price_change_percentage=7d`;
     const resp = await fetchWithTimeout(url);
     if (!resp.ok) throw new Error(`CoinGecko status: ${resp.status}`);
     const data = await resp.json();
@@ -111,18 +108,7 @@ app.get('/api/coingecko/coins', async (req: Request, res: ExpressResponse) => {
     return res.json({ data, source: 'live' });
   } catch (error) {
     console.warn('[CoinBeacon Server] Coins fetch failed, serving fallback:', error);
-    const multiplier = vsCurrency === 'idr' ? 16250 : 1;
-    const adjustedFallback = FALLBACK_TOP_COINS.map((c) => ({
-      ...c,
-      current_price: c.current_price * multiplier,
-      market_cap: c.market_cap * multiplier,
-      total_volume: c.total_volume * multiplier,
-      high_24h: c.high_24h * multiplier,
-      low_24h: c.low_24h * multiplier,
-      ath: c.ath * multiplier,
-      atl: c.atl * multiplier,
-    }));
-    return res.json({ data: adjustedFallback, source: 'fallback', isDelayed: true });
+    return res.json({ data: FALLBACK_TOP_COINS, source: 'fallback', isDelayed: true });
   }
 });
 
@@ -146,7 +132,6 @@ app.get('/api/coingecko/coin/:id', async (req: Request, res: ExpressResponse) =>
   } catch (error) {
     console.warn(`[CoinBeacon Server] Coin detail fetch failed for ${coinId}, constructing fallback:`, error);
     const topCoinMatch = FALLBACK_TOP_COINS.find((c) => c.id === coinId) || FALLBACK_TOP_COINS[0];
-    const multiplier = 16250;
 
     const constructedFallback = {
       id: topCoinMatch.id,
@@ -173,12 +158,12 @@ app.get('/api/coingecko/coin/:id', async (req: Request, res: ExpressResponse) =>
       sentiment_votes_up_percentage: 84,
       sentiment_votes_down_percentage: 16,
       market_data: {
-        current_price: { usd: topCoinMatch.current_price, idr: topCoinMatch.current_price * multiplier },
-        market_cap: { usd: topCoinMatch.market_cap, idr: topCoinMatch.market_cap * multiplier },
-        fully_diluted_valuation: { usd: topCoinMatch.fully_diluted_valuation || topCoinMatch.market_cap * 1.05, idr: (topCoinMatch.fully_diluted_valuation || topCoinMatch.market_cap * 1.05) * multiplier },
-        total_volume: { usd: topCoinMatch.total_volume, idr: topCoinMatch.total_volume * multiplier },
-        high_24h: { usd: topCoinMatch.high_24h, idr: topCoinMatch.high_24h * multiplier },
-        low_24h: { usd: topCoinMatch.low_24h, idr: topCoinMatch.low_24h * multiplier },
+        current_price: { usd: topCoinMatch.current_price },
+        market_cap: { usd: topCoinMatch.market_cap },
+        fully_diluted_valuation: { usd: topCoinMatch.fully_diluted_valuation || topCoinMatch.market_cap * 1.05 },
+        total_volume: { usd: topCoinMatch.total_volume },
+        high_24h: { usd: topCoinMatch.high_24h },
+        low_24h: { usd: topCoinMatch.low_24h },
         price_change_24h: topCoinMatch.price_change_24h,
         price_change_percentage_24h: topCoinMatch.price_change_percentage_24h,
         price_change_percentage_7d: topCoinMatch.price_change_percentage_7d_in_currency || 4.2,
@@ -189,12 +174,12 @@ app.get('/api/coingecko/coin/:id', async (req: Request, res: ExpressResponse) =>
         circulating_supply: topCoinMatch.circulating_supply,
         total_supply: topCoinMatch.total_supply || topCoinMatch.circulating_supply,
         max_supply: topCoinMatch.max_supply,
-        ath: { usd: topCoinMatch.ath, idr: topCoinMatch.ath * multiplier },
-        ath_change_percentage: { usd: topCoinMatch.ath_change_percentage, idr: topCoinMatch.ath_change_percentage },
-        ath_date: { usd: topCoinMatch.ath_date, idr: topCoinMatch.ath_date },
-        atl: { usd: topCoinMatch.atl, idr: topCoinMatch.atl * multiplier },
-        atl_change_percentage: { usd: 100000, idr: 100000 },
-        atl_date: { usd: '2013-07-06', idr: '2013-07-06' },
+        ath: { usd: topCoinMatch.ath },
+        ath_change_percentage: { usd: topCoinMatch.ath_change_percentage },
+        ath_date: { usd: topCoinMatch.ath_date },
+        atl: { usd: topCoinMatch.atl },
+        atl_change_percentage: { usd: 100000 },
+        atl_date: { usd: '2013-07-06' },
         sparkline_7d: topCoinMatch.sparkline_in_7d
       }
     };
@@ -207,8 +192,7 @@ app.get('/api/coingecko/coin/:id', async (req: Request, res: ExpressResponse) =>
 app.get('/api/coingecko/coin/:id/chart', async (req: Request, res: ExpressResponse) => {
   const coinId = req.params.id;
   const days = req.query.days || '7';
-  const vsCurrency = String(req.query.vs_currency || 'usd').toLowerCase();
-  const cacheKey = `coin_chart_${coinId}_${days}_${vsCurrency}`;
+  const cacheKey = `coin_chart_${coinId}_${days}`;
 
   const cached = getCached(cacheKey, 10 * 60 * 1000);
   if (cached) {
@@ -216,7 +200,7 @@ app.get('/api/coingecko/coin/:id/chart', async (req: Request, res: ExpressRespon
   }
 
   try {
-    const url = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${vsCurrency}&days=${days}`;
+    const url = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`;
     const resp = await fetchWithTimeout(url);
     if (!resp.ok) throw new Error(`CoinGecko chart status: ${resp.status}`);
     const data = await resp.json();
@@ -225,8 +209,7 @@ app.get('/api/coingecko/coin/:id/chart', async (req: Request, res: ExpressRespon
   } catch (error) {
     console.warn(`[CoinBeacon Server] Chart fetch failed for ${coinId}, generating synthetic chart:`, error);
     const topCoinMatch = FALLBACK_TOP_COINS.find((c) => c.id === coinId) || FALLBACK_TOP_COINS[0];
-    const multiplier = vsCurrency === 'idr' ? 16250 : 1;
-    const basePrice = topCoinMatch.current_price * multiplier;
+    const basePrice = topCoinMatch.current_price;
     const pointsCount = days === '1' ? 24 : days === '7' ? 28 : days === '30' ? 30 : 60;
     const now = Date.now();
     const interval = (Number(days) * 24 * 3600 * 1000) / pointsCount;
@@ -242,7 +225,7 @@ app.get('/api/coingecko/coin/:id/chart', async (req: Request, res: ExpressRespon
       currentP = currentP * (1 + variation);
       prices.push([timestamp, Number(currentP.toFixed(2))]);
       market_caps.push([timestamp, Math.round(currentP * topCoinMatch.circulating_supply)]);
-      total_volumes.push([timestamp, Math.round(topCoinMatch.total_volume * multiplier * (0.8 + Math.random() * 0.4))]);
+      total_volumes.push([timestamp, Math.round(topCoinMatch.total_volume * (0.8 + Math.random() * 0.4))]);
     }
 
     const syntheticData = { prices, market_caps, total_volumes };

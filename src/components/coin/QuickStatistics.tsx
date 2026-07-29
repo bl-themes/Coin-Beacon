@@ -2,7 +2,6 @@ import React from 'react';
 import { CoinDetailMarketData } from '../../types';
 import { formatCurrency, formatNumber, formatDate, formatPercent } from '../../utils/formatters';
 import { Award, Database, Maximize2, Layers, TrendingUp, TrendingDown, Calendar, Hash } from 'lucide-react';
-import { useCurrency, useI18n } from '../../context/AppContext';
 
 interface QuickStatisticsProps {
   marketData: CoinDetailMarketData;
@@ -15,21 +14,17 @@ export const QuickStatistics: React.FC<QuickStatisticsProps> = ({
   symbol,
   rank,
 }) => {
-  const { currency } = useCurrency();
-  const { t } = useI18n();
-
   const circulating = marketData?.circulating_supply || 0;
   const total = marketData?.total_supply || circulating;
   const max = marketData?.max_supply || null;
 
-  const currKey = currency.toLowerCase();
-  const ath = marketData?.ath?.[currKey] ?? marketData?.ath?.usd ?? 0;
-  const athChange = marketData?.ath_change_percentage?.[currKey] ?? marketData?.ath_change_percentage?.usd ?? 0;
-  const athDate = marketData?.ath_date?.[currKey] ?? marketData?.ath_date?.usd ?? '';
+  const ath = marketData?.ath?.usd || 0;
+  const athChange = marketData?.ath_change_percentage?.usd || 0;
+  const athDate = marketData?.ath_date?.usd || '';
 
-  const atl = marketData?.atl?.[currKey] ?? marketData?.atl?.usd ?? 0;
-  const atlChange = marketData?.atl_change_percentage?.[currKey] ?? marketData?.atl_change_percentage?.usd ?? 0;
-  const atlDate = marketData?.atl_date?.[currKey] ?? marketData?.atl_date?.usd ?? '';
+  const atl = marketData?.atl?.usd || 0;
+  const atlChange = marketData?.atl_change_percentage?.usd || 0;
+  const atlDate = marketData?.atl_date?.usd || '';
 
   const statCards = [
     {
@@ -40,29 +35,29 @@ export const QuickStatistics: React.FC<QuickStatisticsProps> = ({
       iconColor: 'text-blue-500',
     },
     {
-      title: t('coinDetail.circulatingSupply'),
+      title: 'Circulating Supply',
       value: `${formatNumber(circulating)} ${symbol.toUpperCase()}`,
       sub: max ? `${((circulating / max) * 100).toFixed(1)}% of Max Supply` : 'Active Coins',
       icon: Database,
       iconColor: 'text-indigo-500',
     },
     {
-      title: t('coinDetail.maxSupply'),
+      title: 'Max Supply',
       value: max ? `${formatNumber(max)} ${symbol.toUpperCase()}` : 'Unlimited',
       sub: max ? 'Hard Capped' : 'Inflationary Schedule',
       icon: Maximize2,
       iconColor: 'text-sky-500',
     },
     {
-      title: t('coinDetail.totalSupply'),
+      title: 'Total Supply',
       value: `${formatNumber(total)} ${symbol.toUpperCase()}`,
       sub: 'Minted Coins',
       icon: Layers,
       iconColor: 'text-purple-500',
     },
     {
-      title: t('coinDetail.allTimeHigh'),
-      value: formatCurrency(ath, currency),
+      title: 'All-Time High (ATH)',
+      value: formatCurrency(ath),
       sub: `${formatPercent(athChange)} from peak`,
       icon: TrendingUp,
       iconColor: 'text-green-500',
@@ -76,8 +71,8 @@ export const QuickStatistics: React.FC<QuickStatisticsProps> = ({
       iconColor: 'text-amber-500',
     },
     {
-      title: t('coinDetail.allTimeLow'),
-      value: formatCurrency(atl, currency),
+      title: 'All-Time Low (ATL)',
+      value: formatCurrency(atl),
       sub: `+${formatPercent(atlChange)} from lowest`,
       icon: TrendingDown,
       iconColor: 'text-red-500',

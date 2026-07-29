@@ -9,11 +9,12 @@ import {
   Clock,
   Search,
   Loader2,
+  Sparkles,
+  TrendingUp,
   Zap,
   ArrowRight,
   X,
 } from 'lucide-react';
-import { useCurrency } from '../../context/AppContext';
 
 interface GlobalOverviewProps {
   data: GlobalMarketData | null;
@@ -26,8 +27,8 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
   data,
   loading,
   onSelectCoin,
+  onOpenSearch,
 }) => {
-  const { currency } = useCurrency();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResult>({ coins: [], categories: [] });
   const [isSearching, setIsSearching] = useState(false);
@@ -130,9 +131,8 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
     );
   }
 
-  const currKey = currency.toLowerCase();
-  const totalCap = data.total_market_cap?.[currKey] ?? data.total_market_cap?.usd ?? 0;
-  const totalVol = data.total_volume?.[currKey] ?? data.total_volume?.usd ?? 0;
+  const totalCap = data.total_market_cap?.usd || 0;
+  const totalVol = data.total_volume?.usd || 0;
   const capChange = data.market_cap_change_percentage_24h_usd || 0;
   const btcDom = data.market_cap_percentage?.btc || 0;
   const ethDom = data.market_cap_percentage?.eth || 0;
@@ -293,7 +293,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
             </div>
           </div>
           <div className="text-2xl font-bold font-mono text-slate-900 dark:text-white tracking-tight">
-            {formatCurrency(totalCap, currency, 0, true)}
+            {formatCurrency(totalCap, 0, true)}
           </div>
           <div className="text-xs mt-2 font-mono flex items-center gap-2">
             <span className={`px-2 py-0.5 rounded-md font-semibold text-xs ${capChange >= 0 ? 'text-green-600 dark:text-green-500 bg-green-500/10 border border-green-500/20' : 'text-red-600 dark:text-red-500 bg-red-500/10 border border-red-500/20'}`}>
@@ -312,7 +312,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
             </div>
           </div>
           <div className="text-2xl font-bold font-mono text-slate-900 dark:text-white tracking-tight">
-            {formatCurrency(totalVol, currency, 0, true)}
+            {formatCurrency(totalVol, 0, true)}
           </div>
           <div className="text-xs text-slate-500 dark:text-slate-400 mt-2 font-mono">
             Active Markets: <span className="text-slate-800 dark:text-slate-200 font-semibold">{data.markets ? data.markets.toLocaleString() : '1,120'}</span>

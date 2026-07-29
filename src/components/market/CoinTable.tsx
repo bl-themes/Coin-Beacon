@@ -4,7 +4,6 @@ import { formatCurrency, formatPercent, formatNumber } from '../../utils/formatt
 import { PriceBadge } from '../common/PriceBadge';
 import { MiniSparkline } from './MiniSparkline';
 import { Star, ArrowUpDown, ArrowUp, ArrowDown, Search, ChevronLeft, ChevronRight, SlidersHorizontal, Sparkles } from 'lucide-react';
-import { useCurrency, useI18n } from '../../context/AppContext';
 
 interface CoinTableProps {
   coins: Coin[];
@@ -24,8 +23,6 @@ export const CoinTable: React.FC<CoinTableProps> = ({
   onToggleWatchlist,
   loading = false,
 }) => {
-  const { currency } = useCurrency();
-  const { t } = useI18n();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortField, setSortField] = useState<SortField>('rank');
@@ -348,7 +345,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
 
                     {/* Price */}
                     <td className="py-3.5 px-4 text-right font-mono font-bold text-slate-900 dark:text-white text-sm tracking-tight">
-                      {formatCurrency(coin.current_price, currency)}
+                      {formatCurrency(coin.current_price)}
                     </td>
 
                     {/* 24h Change */}
@@ -363,12 +360,12 @@ export const CoinTable: React.FC<CoinTableProps> = ({
 
                     {/* Market Cap */}
                     <td className="py-3.5 px-4 text-right font-mono font-medium text-slate-700 dark:text-slate-200 text-xs hidden lg:table-cell">
-                      {formatCurrency(coin.market_cap, currency, 0, true)}
+                      {formatCurrency(coin.market_cap, 0, true)}
                     </td>
 
                     {/* 24h Volume */}
                     <td className="py-3.5 px-4 text-right font-mono text-slate-600 dark:text-slate-300 text-xs hidden xl:table-cell">
-                      {formatCurrency(coin.total_volume, currency, 0, true)}
+                      {formatCurrency(coin.total_volume, 0, true)}
                     </td>
 
                     {/* Circulating Supply */}

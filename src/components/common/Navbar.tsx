@@ -9,10 +9,10 @@ import {
   Layers,
   Menu,
   X,
+  Activity,
 } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageSelector } from './LanguageSelector';
-import { useI18n } from '../../context/AppContext';
 
 export type NavView = 'home' | 'coins' | 'categories' | 'watchlist' | 'news' | 'learn' | 'coin-detail';
 
@@ -33,7 +33,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useI18n();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,17 +43,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navItems = [
-    { id: 'home' as NavView, label: t('nav.markets'), icon: TrendingUp },
-    { id: 'coins' as NavView, label: t('nav.top100'), icon: Compass },
-    { id: 'categories' as NavView, label: t('nav.categories'), icon: Layers },
+    { id: 'home' as NavView, label: 'Markets', icon: TrendingUp },
+    { id: 'coins' as NavView, label: 'Top 100', icon: Compass },
+    { id: 'categories' as NavView, label: 'Categories', icon: Layers },
     {
       id: 'watchlist' as NavView,
-      label: t('nav.watchlist'),
+      label: 'Watchlist',
       icon: Star,
       badge: watchlistCount > 0 ? watchlistCount : undefined,
     },
-    { id: 'news' as NavView, label: t('nav.news'), icon: Newspaper },
-    { id: 'learn' as NavView, label: t('nav.academy'), icon: BookOpen },
+    { id: 'news' as NavView, label: 'News', icon: Newspaper },
+    { id: 'learn' as NavView, label: 'Academy', icon: BookOpen },
   ];
 
   const handleNavClick = (view: NavView) => {

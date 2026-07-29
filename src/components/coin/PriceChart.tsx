@@ -13,7 +13,6 @@ import { getCoinChartData } from '../../services/coins';
 import { formatCurrency, formatDate } from '../../utils/formatters';
 import { ChartSkeleton } from '../common/LoadingSkeleton';
 import { BarChart2, RefreshCw, AlertTriangle, TrendingUp, TrendingDown } from 'lucide-react';
-import { useCurrency, useI18n } from '../../context/AppContext';
 
 interface PriceChartProps {
   coinId: string;
@@ -24,14 +23,12 @@ interface PriceChartProps {
 export const PriceChart: React.FC<PriceChartProps> = ({
   coinId,
   coinName,
+  isPositive = true,
 }) => {
   const [range, setRange] = useState<TimeRange>('7D');
   const [chartData, setChartData] = useState<{ timestamp: number; price: number; volume: number }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const { currency } = useCurrency();
-  const { t } = useI18n();
 
   const ranges: TimeRange[] = ['24H', '7D', '30D', '90D', '1Y', 'Max'];
 
@@ -39,7 +36,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
     setLoading(true);
     setError(null);
     try {
-      const res = await getCoinChartData(coinId, range, currency);
+      const res = await getCoinChartData(coinId, range);
       if (res?.data?.prices && res.data.prices.length > 0) {
         const formatted = res.data.prices.map((p, idx) => ({
           timestamp: p[0],
@@ -60,7 +57,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
 
   useEffect(() => {
     loadChart();
-  }, [coinId, range, currency]);
+  }, [coinId, range]);
 
   const prices = chartData.map((d) => d.price);
   const minPrice = prices.length ? Math.min(...prices) : 0;
@@ -81,7 +78,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <h2 id="interactive-chart-heading" className="text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-              <BarChart2 size={18} className="text-blue-500" /> {coinName} {t('coinDetail.priceChart')}
+              <BarChart2 size={18} className="text-blue-500" /> {coinName} Interactive Price Chart
             </h2>
             <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md flex items-center gap-1 ${
               isRangePositive
@@ -93,8 +90,8 @@ export const PriceChart: React.FC<PriceChartProps> = ({
             </span>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Period High: <span className="font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(maxPrice, currency)}</span> {' | '} Period Low:{' '}
-            <span className="font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(minPrice, currency)}</span>
+            Period High: <span className="font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(maxPrice)}</span> {' | '} Period Low:{' '}
+            <span className="font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(minPrice)}</span>
           </p>
         </div>
 
@@ -162,7 +159,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
 
               <YAxis
                 domain={['auto', 'auto']}
-                tickFormatter={(val) => formatCurrency(val, currency, 0, true)}
+                tickFormatter={(val) => `$${val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val < 1 ? val.toFixed(4) : val.toFixed(2)}`}
                 stroke="#6b7280"
                 fontSize={11}
                 tickLine={false}
@@ -177,11 +174,11 @@ export const PriceChart: React.FC<PriceChartProps> = ({
                       <div className="bg-slate-900 text-white border border-slate-700 p-3 rounded-xl shadow-2xl font-mono text-xs">
                         <div className="text-slate-400 mb-1">{formatDate(data.timestamp)}</div>
                         <div className="text-white font-bold text-sm">
-                          Price: {formatCurrency(data.price, currency)}
+                          Price: {formatCurrency(data.price)}
                         </div>
                         {data.volume > 0 && (
                           <div className="text-slate-400 text-[11px] mt-0.5">
-                            Volume: {formatCurrency(data.volume, currency, 0, true)}
+                            Volume: {formatCurrency(data.volume, 0, true)}
                           </div>
                         )}
                       </div>

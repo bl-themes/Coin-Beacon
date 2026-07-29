@@ -9,23 +9,23 @@ interface MarketStatsGridProps {
 }
 
 export const MarketStatsGrid: React.FC<MarketStatsGridProps> = ({ marketData, symbol }) => {
-  const marketCap = marketData?.market_cap?.usd || 0;
-  const fdv = marketData?.fully_diluted_valuation?.usd || 0;
-  const volume24h = marketData?.total_volume?.usd || 0;
-  const high24h = marketData?.high_24h?.usd || 0;
-  const low24h = marketData?.low_24h?.usd || 0;
+  const marketCap = marketData.market_cap?.usd || 0;
+  const fdv = marketData.fully_diluted_valuation?.usd || 0;
+  const volume24h = marketData.total_volume?.usd || 0;
+  const high24h = marketData.high_24h?.usd || 0;
+  const low24h = marketData.low_24h?.usd || 0;
 
-  const circulating = marketData?.circulating_supply || 0;
-  const total = marketData?.total_supply || circulating;
-  const max = marketData?.max_supply || null;
+  const circulating = marketData.circulating_supply || 0;
+  const total = marketData.total_supply || circulating;
+  const max = marketData.max_supply || null;
 
-  const ath = marketData?.ath?.usd || 0;
-  const athChange = marketData?.ath_change_percentage?.usd || 0;
-  const athDate = marketData?.ath_date?.usd || '';
+  const ath = marketData.ath?.usd || 0;
+  const athChange = marketData.ath_change_percentage?.usd || 0;
+  const athDate = marketData.ath_date?.usd || '';
 
-  const atl = marketData?.atl?.usd || 0;
-  const atlChange = marketData?.atl_change_percentage?.usd || 0;
-  const atlDate = marketData?.atl_date?.usd || '';
+  const atl = marketData.atl?.usd || 0;
+  const atlChange = marketData.atl_change_percentage?.usd || 0;
+  const atlDate = marketData.atl_date?.usd || '';
 
   const volumeToCapRatio = marketCap ? (volume24h / marketCap).toFixed(4) : 'N/A';
 

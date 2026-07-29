@@ -1,7 +1,6 @@
 import React from 'react';
-import { formatCurrency } from '../../utils/formatters';
-import { ShieldCheck, Building2 } from 'lucide-react';
-import { useCurrency } from '../../context/AppContext';
+import { formatCurrency, formatPercent } from '../../utils/formatters';
+import { ShieldCheck, ArrowUpRight, Building2 } from 'lucide-react';
 
 interface MarketPair {
   exchange: string;
@@ -24,7 +23,6 @@ export const TopMarketsSection: React.FC<TopMarketsSectionProps> = ({
   symbol,
   currentPrice,
 }) => {
-  const { currency } = useCurrency();
   const symUpper = symbol.toUpperCase();
 
   const mockMarkets: MarketPair[] = [
@@ -124,8 +122,8 @@ export const TopMarketsSection: React.FC<TopMarketsSectionProps> = ({
                   </span>
                 </td>
                 <td className="py-3 px-3 font-mono text-blue-600 dark:text-blue-400 font-semibold">{m.pair}</td>
-                <td className="py-3 px-3 text-right font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(m.price, currency)}</td>
-                <td className="py-3 px-3 text-right font-mono text-slate-700 dark:text-slate-300">{formatCurrency(m.volume24hUsd, currency, 0, true)}</td>
+                <td className="py-3 px-3 text-right font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(m.price)}</td>
+                <td className="py-3 px-3 text-right font-mono text-slate-700 dark:text-slate-300">{formatCurrency(m.volume24hUsd, 0, true)}</td>
                 <td className="py-3 px-3 text-right font-mono text-slate-600 dark:text-slate-400">{m.volumeSharePct}%</td>
                 <td className="py-3 px-3 text-center">
                   <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-green-600 dark:text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20">

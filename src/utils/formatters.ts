@@ -1,52 +1,10 @@
 export function formatCurrency(
   value: number | null | undefined,
-  currencyOrDigits: string | number = 'USD',
-  digitsOrCompact?: number | boolean,
-  compactFlag?: boolean
+  digits: number = 2,
+  compact: boolean = false
 ): string {
-  let currencyCode = 'USD';
-  let digits = 2;
-  let compact = false;
+  if (value === null || value === undefined || isNaN(value)) return '$0.00';
 
-  if (typeof currencyOrDigits === 'string') {
-    currencyCode = currencyOrDigits.toUpperCase();
-    if (typeof digitsOrCompact === 'number') digits = digitsOrCompact;
-    if (typeof compactFlag === 'boolean') compact = compactFlag;
-  } else if (typeof currencyOrDigits === 'number') {
-    digits = currencyOrDigits;
-    if (typeof digitsOrCompact === 'boolean') compact = digitsOrCompact;
-  }
-
-  const isIdr = currencyCode === 'IDR';
-
-  if (value === null || value === undefined || isNaN(value)) {
-    return isIdr ? 'Rp0' : '$0.00';
-  }
-
-  if (isIdr) {
-    if (compact) {
-      if (Math.abs(value) >= 1e12) return `Rp${(value / 1e12).toFixed(2)} T`;
-      if (Math.abs(value) >= 1e9) return `Rp${(value / 1e9).toFixed(2)} M`;
-      if (Math.abs(value) >= 1e6) return `Rp${(value / 1e6).toFixed(2)} Jt`;
-      if (Math.abs(value) >= 1e3) return `Rp${(value / 1e3).toFixed(2)} Rb`;
-    }
-
-    if (Math.abs(value) < 1 && Math.abs(value) > 0) {
-      return `Rp${value.toFixed(4)}`;
-    }
-
-    const formatted = new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: digits === 0 ? 0 : 2,
-    }).format(value);
-
-    // Format like "Rp1.923.582.145" matching user spec (remove space after Rp if present)
-    return formatted.replace(/^Rp\s*/, 'Rp');
-  }
-
-  // USD
   if (compact) {
     if (Math.abs(value) >= 1e12) return `$${(value / 1e12).toFixed(2)}T`;
     if (Math.abs(value) >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;

@@ -25,10 +25,7 @@ import { getGlobalMarketData } from './services/market';
 import { getTopCoins, getCoinDetail } from './services/coins';
 import { getCategories } from './services/content';
 
-import { AppProvider, useCurrency } from './context/AppContext';
-
-function AppContent() {
-  const { currency } = useCurrency();
+export default function App() {
   const [currentView, setCurrentView] = useState<NavView | 'coin-detail'>('home');
   const [selectedCoinId, setSelectedCoinId] = useState<string | null>(null);
 
@@ -80,7 +77,7 @@ function AppContent() {
     try {
       const [marketRes, coinsRes, catRes] = await Promise.all([
         getGlobalMarketData(),
-        getTopCoins(1, 100, currency),
+        getTopCoins(1, 100),
         getCategories(),
       ]);
 
@@ -107,7 +104,7 @@ function AppContent() {
 
   useEffect(() => {
     loadInitialData();
-  }, [currency]);
+  }, []);
 
   // Handle Coin Selection
   const handleSelectCoin = async (coinId: string) => {
@@ -187,30 +184,28 @@ function AppContent() {
         <div className="flex items-center gap-1.5 whitespace-nowrap">
           <span className="text-slate-400">Market Cap:</span>
           <span className="text-blue-400 font-bold">
-            {globalMarket?.total_market_cap?.usd ? `$${(globalMarket.total_market_cap.usd / 1e12).toFixed(2)}T` : '$2.48T'}
+            {globalMarket ? `$${(globalMarket.total_market_cap.usd / 1e12).toFixed(2)}T` : '$2.48T'}
           </span>
           <span className={(globalMarket?.market_cap_change_percentage_24h_usd || 0) >= 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'}>
-            {globalMarket && typeof globalMarket.market_cap_change_percentage_24h_usd === 'number'
-              ? `${globalMarket.market_cap_change_percentage_24h_usd >= 0 ? '+' : ''}${globalMarket.market_cap_change_percentage_24h_usd.toFixed(1)}%`
-              : '+1.2%'}
+            {globalMarket ? `${globalMarket.market_cap_change_percentage_24h_usd >= 0 ? '+' : ''}${globalMarket.market_cap_change_percentage_24h_usd.toFixed(1)}%` : '+1.2%'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap">
           <span className="text-slate-400">24h Vol:</span>
           <span className="text-slate-200 font-bold">
-            {globalMarket?.total_volume?.usd ? `$${(globalMarket.total_volume.usd / 1e9).toFixed(1)}B` : '$84.2B'}
+            {globalMarket ? `$${(globalMarket.total_volume.usd / 1e9).toFixed(1)}B` : '$84.2B'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap">
           <span className="text-slate-400">BTC Dom:</span>
           <span className="text-slate-200 font-bold">
-            {globalMarket?.market_cap_percentage?.btc ? `${globalMarket.market_cap_percentage.btc.toFixed(1)}%` : '52.4%'}
+            {globalMarket ? `${globalMarket.market_cap_percentage.btc.toFixed(1)}%` : '52.4%'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap">
           <span className="text-slate-400">ETH Dom:</span>
           <span className="text-slate-200 font-bold">
-            {globalMarket?.market_cap_percentage?.eth ? `${globalMarket.market_cap_percentage.eth.toFixed(1)}%` : '17.1%'}
+            {globalMarket ? `${globalMarket.market_cap_percentage.eth.toFixed(1)}%` : '17.1%'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap ml-auto">
@@ -347,13 +342,5 @@ function AppContent() {
         onSelectCoin={handleSelectCoin}
       />
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
   );
 }

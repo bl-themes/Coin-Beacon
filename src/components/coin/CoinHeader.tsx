@@ -3,7 +3,6 @@ import { CoinDetail } from '../../types';
 import { formatCurrency } from '../../utils/formatters';
 import { PriceBadge } from '../common/PriceBadge';
 import { Star, Share2, Copy, Check, Sparkles } from 'lucide-react';
-import { useCurrency, useI18n } from '../../context/AppContext';
 
 interface CoinHeaderProps {
   coin: CoinDetail;
@@ -19,13 +18,7 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
   const [copied, setCopied] = useState(false);
   const [shareToast, setShareToast] = useState<string | null>(null);
 
-  const { currency } = useCurrency();
-  const { t } = useI18n();
-
-  const currentPrice =
-    coin.market_data?.current_price?.[currency.toLowerCase()] ??
-    coin.market_data?.current_price?.usd ??
-    0;
+  const currentPrice = coin.market_data?.current_price?.usd || 0;
   const change24h = coin.market_data?.price_change_percentage_24h || 0;
   const rank = coin.market_cap_rank || 1;
 
@@ -82,7 +75,7 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
                 {coin.symbol}
               </span>
               <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-200 dark:border-blue-500/20">
-                {t('coinDetail.rank')}{rank}
+                Rank #{rank}
               </span>
             </div>
 
@@ -103,11 +96,11 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between lg:justify-end gap-5 border-t lg:border-t-0 pt-4 lg:pt-0 border-slate-200 dark:border-slate-800/60">
           <div>
             <div className="text-[10px] uppercase font-mono tracking-wider text-slate-500 dark:text-slate-400 mb-1 flex items-center gap-1">
-              <Sparkles size={12} className="text-blue-500" /> Live Market Price ({currency})
+              <Sparkles size={12} className="text-blue-500" /> Live Market Price (USD)
             </div>
             <div className="flex items-baseline gap-3">
               <span className="text-3xl sm:text-4xl font-extrabold font-mono text-slate-900 dark:text-white tracking-tight">
-                {formatCurrency(currentPrice, currency)}
+                {formatCurrency(currentPrice)}
               </span>
               <PriceBadge value={change24h} size="lg" />
             </div>
@@ -117,7 +110,7 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
             {/* Watchlist Toggle */}
             <button
               onClick={onToggleWatchlist}
-              aria-label={isWatchlisted ? t('coinDetail.inWatchlist') : t('coinDetail.addToWatchlist')}
+              aria-label={isWatchlisted ? 'Remove from Watchlist' : 'Add to Watchlist'}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl border font-semibold text-xs transition-all cursor-pointer ${
                 isWatchlisted
                   ? 'bg-amber-500/10 border-amber-500/40 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20'
@@ -128,15 +121,15 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
                 size={16}
                 className={isWatchlisted ? 'fill-amber-400 text-amber-400' : 'text-slate-400'}
               />
-              <span>{isWatchlisted ? t('coinDetail.inWatchlist') : t('coinDetail.addToWatchlist')}</span>
+              <span>{isWatchlisted ? 'Watchlisted' : 'Watchlist'}</span>
             </button>
 
             {/* Share Button */}
             <button
               onClick={handleShare}
-              aria-label={t('coinDetail.share')}
+              aria-label="Share coin details"
               className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer"
-              title={t('coinDetail.share')}
+              title="Share Coin"
             >
               <Share2 size={16} />
             </button>
