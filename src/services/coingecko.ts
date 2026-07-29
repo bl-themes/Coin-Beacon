@@ -45,11 +45,25 @@ async function safeApiFetch<T>(
 }
 
 export async function fetchGlobalMarket(): Promise<{ data: GlobalMarketData; source: string; isDelayed?: boolean }> {
-  return safeApiFetch<GlobalMarketData>(
+  const result = await safeApiFetch<any>(
     '/api/coingecko/global',
     `${COINGECKO_BASE_URL}/global`,
     FALLBACK_GLOBAL_MARKET
   );
+
+  let rawData = result.data;
+  if (rawData && rawData.data) {
+    rawData = rawData.data;
+  }
+
+  if (!rawData || !rawData.total_market_cap) {
+    rawData = FALLBACK_GLOBAL_MARKET;
+  }
+
+  return {
+    ...result,
+    data: rawData as GlobalMarketData,
+  };
 }
 
 export async function fetchTopCoins(
