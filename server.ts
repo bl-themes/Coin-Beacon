@@ -45,6 +45,7 @@ function setCache<T>(key: string, data: T): void {
 async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 6000): Promise<globalThis.Response> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
+  const apiKey = process.env.COINGECKO_API_KEY || 'CG-K2e3Lda3Byu2PoNuffrssMXr';
   try {
     const response = await fetch(url, {
       ...options,
@@ -52,6 +53,7 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutM
       headers: {
         'Accept': 'application/json',
         'User-Agent': 'CoinBeacon/1.0',
+        ...(apiKey ? { 'x-cg-demo-api-key': apiKey } : {}),
         ...(options.headers || {}),
       },
     });
