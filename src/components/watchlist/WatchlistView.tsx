@@ -38,10 +38,10 @@ export const WatchlistView: React.FC<WatchlistViewProps> = ({
     <div className="my-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2 font-sans">
-            <Bookmark size={24} className="text-amber-400" /> Personal Crypto Watchlist ({watchlistedCoins.length})
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
+            <Bookmark size={24} className="text-amber-500 dark:text-amber-400" /> Personal Crypto Watchlist ({watchlistedCoins.length})
           </h2>
-          <p className="text-sm text-gray-400 mt-0.5">
+          <p className="text-sm text-slate-600 dark:text-gray-400 mt-0.5">
             Real-time price tracking and metrics for your starred assets.
           </p>
         </div>
@@ -54,7 +54,7 @@ export const WatchlistView: React.FC<WatchlistViewProps> = ({
             <div
               key={coin.id}
               onClick={() => onSelectCoin(coin.id)}
-              className="bg-[#14171F] border border-slate-800/60 rounded-2xl p-5 hover:border-amber-500/40 hover:bg-slate-900/40 transition-all cursor-pointer group shadow-2xl flex flex-col justify-between"
+              className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-amber-500/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all cursor-pointer group shadow-sm dark:shadow-2xl flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
@@ -62,16 +62,16 @@ export const WatchlistView: React.FC<WatchlistViewProps> = ({
                     <img
                       src={coin.image}
                       alt={coin.name}
-                      className="w-8 h-8 rounded-full bg-slate-900"
+                      className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-900"
                       onError={(e) => {
                         (e.target as HTMLElement).style.display = 'none';
                       }}
                     />
                     <div>
-                      <h3 className="font-bold text-white text-base group-hover:text-amber-400 transition-colors">
+                      <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                         {coin.name}
                       </h3>
-                      <span className="text-[10px] font-mono text-slate-400 uppercase">
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase">
                         {coin.symbol} • Rank #{coin.market_cap_rank || '-'}
                       </span>
                     </div>
@@ -82,22 +82,22 @@ export const WatchlistView: React.FC<WatchlistViewProps> = ({
                       e.stopPropagation();
                       onRemoveFromWatchlist(coin.id);
                     }}
-                    className="p-1.5 rounded-lg bg-slate-900/50 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-800/60 transition-colors cursor-pointer"
+                    className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-900/50 hover:bg-red-500/10 dark:hover:bg-red-500/20 text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 border border-slate-200 dark:border-slate-800/60 transition-colors cursor-pointer"
                     title="Remove from Watchlist"
                   >
                     <Trash2 size={14} />
                   </button>
                 </div>
 
-                <div className="my-4 pt-3 border-t border-slate-800/60">
-                  <div className="text-[10px] uppercase font-mono text-slate-400 mb-0.5">Live Price</div>
+                <div className="my-4 pt-3 border-t border-slate-200 dark:border-slate-800/60">
+                  <div className="text-[10px] uppercase font-mono text-slate-500 dark:text-slate-400 mb-0.5">Live Price</div>
                   <div className="flex items-baseline justify-between gap-2">
-                    <span className="text-2xl font-bold font-mono text-white">
+                    <span className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
                       {formatCurrency(coin.current_price)}
                     </span>
                     <span
                       className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
-                        change24 >= 0 ? 'text-green-500 bg-green-500/10' : 'text-red-500 bg-red-500/10'
+                        change24 >= 0 ? 'text-green-600 dark:text-green-500 bg-green-500/10' : 'text-red-600 dark:text-red-500 bg-red-500/10'
                       }`}
                     >
                       {formatPercent(change24)}
@@ -106,9 +106,9 @@ export const WatchlistView: React.FC<WatchlistViewProps> = ({
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-slate-400 font-mono pt-3 border-t border-slate-800/60">
+              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono pt-3 border-t border-slate-200 dark:border-slate-800/60">
                 <span>Cap: {formatCurrency(coin.market_cap, 0, true)}</span>
-                <span className="text-blue-400 font-medium group-hover:underline flex items-center gap-1">
+                <span className="text-blue-600 dark:text-blue-400 font-medium group-hover:underline flex items-center gap-1">
                   View Detail <ArrowRight size={12} />
                 </span>
               </div>

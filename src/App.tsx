@@ -167,7 +167,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0E14] text-slate-200 font-sans antialiased selection:bg-blue-500/30 flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0E14] text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-blue-500/30 flex flex-col justify-between transition-colors duration-200">
       <SEOHead title={getSeoTitle()} />
 
       {/* Main Navbar */}
@@ -180,37 +180,37 @@ export default function App() {
       />
 
       {/* Market Ticker Bar (Bento Header) */}
-      <div className="border-b border-slate-800/40 bg-slate-900/20 px-4 sm:px-6 py-2 overflow-x-auto scrollbar-none flex items-center gap-6 text-[11px] font-semibold uppercase tracking-wider text-slate-500 font-mono">
+      <div className="border-b border-slate-200 dark:border-slate-800/40 bg-slate-100/90 dark:bg-slate-900/20 px-4 sm:px-6 py-2 overflow-x-auto scrollbar-none flex items-center gap-6 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 font-mono">
         <div className="flex items-center gap-1.5 whitespace-nowrap">
-          <span className="text-slate-400">Market Cap:</span>
-          <span className="text-blue-400 font-bold">
-            {globalMarket ? `$${(globalMarket.total_market_cap.usd / 1e12).toFixed(2)}T` : '$2.48T'}
+          <span className="text-slate-500 dark:text-slate-400">Market Cap:</span>
+          <span className="text-blue-600 dark:text-blue-400 font-bold">
+            {globalMarket?.total_market_cap?.usd != null ? `$${(globalMarket.total_market_cap.usd / 1e12).toFixed(2)}T` : '$2.48T'}
           </span>
-          <span className={(globalMarket?.market_cap_change_percentage_24h_usd || 0) >= 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'}>
-            {globalMarket ? `${globalMarket.market_cap_change_percentage_24h_usd >= 0 ? '+' : ''}${globalMarket.market_cap_change_percentage_24h_usd.toFixed(1)}%` : '+1.2%'}
-          </span>
-        </div>
-        <div className="flex items-center gap-1.5 whitespace-nowrap">
-          <span className="text-slate-400">24h Vol:</span>
-          <span className="text-slate-200 font-bold">
-            {globalMarket ? `$${(globalMarket.total_volume.usd / 1e9).toFixed(1)}B` : '$84.2B'}
+          <span className={(globalMarket?.market_cap_change_percentage_24h_usd ?? 0) >= 0 ? 'text-green-600 dark:text-green-500 font-bold' : 'text-red-600 dark:text-red-500 font-bold'}>
+            {globalMarket?.market_cap_change_percentage_24h_usd != null ? `${globalMarket.market_cap_change_percentage_24h_usd >= 0 ? '+' : ''}${globalMarket.market_cap_change_percentage_24h_usd.toFixed(1)}%` : '+1.2%'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap">
-          <span className="text-slate-400">BTC Dom:</span>
-          <span className="text-slate-200 font-bold">
-            {globalMarket ? `${globalMarket.market_cap_percentage.btc.toFixed(1)}%` : '52.4%'}
+          <span className="text-slate-500 dark:text-slate-400">24h Vol:</span>
+          <span className="text-slate-900 dark:text-slate-200 font-bold">
+            {globalMarket?.total_volume?.usd != null ? `$${(globalMarket.total_volume.usd / 1e9).toFixed(1)}B` : '$84.2B'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap">
-          <span className="text-slate-400">ETH Dom:</span>
-          <span className="text-slate-200 font-bold">
-            {globalMarket ? `${globalMarket.market_cap_percentage.eth.toFixed(1)}%` : '17.1%'}
+          <span className="text-slate-500 dark:text-slate-400">BTC Dom:</span>
+          <span className="text-slate-900 dark:text-slate-200 font-bold">
+            {globalMarket?.market_cap_percentage?.btc != null ? `${globalMarket.market_cap_percentage.btc.toFixed(1)}%` : '52.4%'}
+          </span>
+        </div>
+        <div className="flex items-center gap-1.5 whitespace-nowrap">
+          <span className="text-slate-500 dark:text-slate-400">ETH Dom:</span>
+          <span className="text-slate-900 dark:text-slate-200 font-bold">
+            {globalMarket?.market_cap_percentage?.eth != null ? `${globalMarket.market_cap_percentage.eth.toFixed(1)}%` : '17.1%'}
           </span>
         </div>
         <div className="flex items-center gap-1.5 whitespace-nowrap ml-auto">
-          <span className="text-slate-400">ETH Gas:</span>
-          <span className="text-blue-400 font-bold">14 Gwei</span>
+          <span className="text-slate-500 dark:text-slate-400">ETH Gas:</span>
+          <span className="text-blue-600 dark:text-blue-400 font-bold">14 Gwei</span>
         </div>
       </div>
 
@@ -243,7 +243,7 @@ export default function App() {
             {/* Top 100 Cryptocurrency Table */}
             <div className="mt-8">
               <div className="flex items-center justify-between mb-2">
-                <h2 className="text-xl font-bold text-white tracking-tight font-sans">
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-sans">
                   Top 100 Cryptocurrencies by Market Capitalization
                 </h2>
               </div>
@@ -267,8 +267,8 @@ export default function App() {
         {/* VIEW 2: TOP 100 COINS */}
         {currentView === 'coins' && (
           <section className="animate-in fade-in duration-200 py-4">
-            <h1 className="text-2xl font-extrabold text-white mb-2">Cryptocurrency Prices by Market Cap</h1>
-            <p className="text-sm text-gray-400 mb-6">
+            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">Cryptocurrency Prices by Market Cap</h1>
+            <p className="text-sm text-slate-600 dark:text-gray-400 mb-6">
               Track top cryptocurrencies ranked by total valuation, 24h liquidity volume, and 7-day price action.
             </p>
             {loadingCoins ? (

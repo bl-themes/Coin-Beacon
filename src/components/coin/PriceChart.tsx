@@ -140,7 +140,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
                 </linearGradient>
               </defs>
 
-              <CartesianGrid strokeDasharray="3 3" stroke="#1f293d" vertical={false} opacity={0.5} />
+              <CartesianGrid strokeDasharray="3 3" stroke="currentColor" className="text-slate-200 dark:text-[#1f293d]" vertical={false} opacity={0.6} />
 
               <XAxis
                 dataKey="timestamp"
@@ -171,13 +171,13 @@ export const PriceChart: React.FC<PriceChartProps> = ({
                   if (active && payload && payload.length) {
                     const data = payload[0].payload;
                     return (
-                      <div className="bg-slate-900 text-white border border-slate-700 p-3 rounded-xl shadow-2xl font-mono text-xs">
-                        <div className="text-slate-400 mb-1">{formatDate(data.timestamp)}</div>
-                        <div className="text-white font-bold text-sm">
+                      <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 p-3 rounded-xl shadow-xl font-mono text-xs">
+                        <div className="text-slate-500 dark:text-slate-400 mb-1">{formatDate(data.timestamp)}</div>
+                        <div className="text-slate-900 dark:text-white font-bold text-sm">
                           Price: {formatCurrency(data.price)}
                         </div>
                         {data.volume > 0 && (
-                          <div className="text-slate-400 text-[11px] mt-0.5">
+                          <div className="text-slate-500 dark:text-slate-400 text-[11px] mt-0.5">
                             Volume: {formatCurrency(data.volume, 0, true)}
                           </div>
                         )}

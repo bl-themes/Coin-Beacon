@@ -14,7 +14,7 @@ export const MiniSparkline: React.FC<MiniSparklineProps> = ({
   height = 36,
 }) => {
   if (!data || data.length < 2) {
-    return <div className="w-[130px] h-[36px] bg-[#161e2e]/40 rounded"></div>;
+    return <div className="w-[130px] h-[36px] bg-slate-200 dark:bg-[#161e2e]/40 rounded"></div>;
   }
 
   const min = Math.min(...data);

@@ -37,8 +37,8 @@ export const PriceBadge: React.FC<PriceBadgeProps> = ({
     <span
       className={`inline-flex items-center rounded-md font-mono ${sizeClasses[size]} ${
         isPositive
-          ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/20'
-          : 'text-rose-400 bg-rose-500/10 border border-rose-500/20'
+          ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20'
+          : 'text-rose-700 dark:text-rose-400 bg-rose-500/10 border border-rose-500/30 dark:border-rose-500/20'
       } ${className}`}
     >
       {showIcon && (

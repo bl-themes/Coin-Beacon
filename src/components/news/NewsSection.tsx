@@ -21,10 +21,10 @@ export const NewsSection: React.FC = () => {
   return (
     <div className="my-8">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2 font-sans">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
           <Newspaper size={24} className="text-blue-500" /> Cryptocurrency News & Market Intelligence
         </h2>
-        <p className="text-sm text-gray-400 mt-1">
+        <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
           Curated institutional breaking news, macroeconomic policy, and technological developments.
         </p>
       </div>
@@ -32,26 +32,26 @@ export const NewsSection: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-pulse">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-44 bg-slate-900/40 rounded-2xl p-6 border border-slate-800/60"></div>
+            <div key={i} className="h-44 bg-slate-100 dark:bg-slate-900/40 rounded-2xl p-6 border border-slate-200 dark:border-slate-800/60"></div>
           ))}
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {news.map((item) => {
             const sentimentColors = {
-              Bullish: 'text-green-500 bg-green-500/10 border-green-500/30',
-              Bearish: 'text-red-500 bg-red-500/10 border-red-500/30',
-              Neutral: 'text-slate-400 bg-slate-500/10 border-slate-500/30',
+              Bullish: 'text-green-600 dark:text-green-500 bg-green-500/10 border-green-500/30',
+              Bearish: 'text-red-600 dark:text-red-500 bg-red-500/10 border-red-500/30',
+              Neutral: 'text-slate-600 dark:text-slate-400 bg-slate-500/10 border-slate-500/30',
             };
 
             return (
               <article
                 key={item.id}
-                className="bg-[#14171F] border border-slate-800/60 rounded-2xl p-6 hover:border-blue-500/40 hover:bg-slate-900/40 transition-all flex flex-col justify-between group shadow-2xl"
+                className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 hover:border-blue-500/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all flex flex-col justify-between group shadow-sm dark:shadow-2xl"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-xs font-mono text-blue-400 font-semibold uppercase tracking-wider flex items-center gap-1">
+                    <span className="text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-wider flex items-center gap-1">
                       <Tag size={12} /> {item.category}
                     </span>
                     {item.sentiment && (
@@ -65,18 +65,18 @@ export const NewsSection: React.FC = () => {
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors leading-snug mb-2 font-sans">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug mb-2 font-sans">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-3 mb-4 font-sans">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4 font-sans">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/60">
+                <div className="flex items-center justify-between text-xs text-slate-500 font-mono pt-3 border-t border-slate-200 dark:border-slate-800/60">
                   <div className="flex items-center gap-2">
-                    <span className="text-slate-300 font-medium">{item.source}</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">{item.source}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
                       <Clock size={12} /> {item.read_time}
