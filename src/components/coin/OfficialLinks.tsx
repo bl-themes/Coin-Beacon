@@ -16,7 +16,7 @@ export const OfficialLinks: React.FC<OfficialLinksProps> = ({ links, coinName })
   const reddit = links?.subreddit_url || '';
 
   const linkItems = [
-    { label: 'Official Website', url: homepage, icon: Globe, iconColor: 'text-blue-500' },
+    { label: 'Official Website', url: homepage, icon: Globe, iconColor: 'text-[#455c00] dark:text-[#daff41]' },
     { label: 'Blockchain Explorer', url: explorer, icon: BookOpen, iconColor: 'text-indigo-500' },
     { label: 'GitHub Repository', url: github, icon: Github, iconColor: 'text-purple-500' },
     { label: 'Official Forum', url: forum, icon: MessageSquare, iconColor: 'text-teal-500' },
@@ -27,7 +27,7 @@ export const OfficialLinks: React.FC<OfficialLinksProps> = ({ links, coinName })
   return (
     <section aria-labelledby="official-links-heading" className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-4 shadow-sm dark:shadow-2xl">
       <h2 id="official-links-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-4 flex items-center gap-2 font-sans">
-        <Link2 size={18} className="text-blue-500" /> Official Resources & Verified Links
+        <Link2 size={18} className="text-[#455c00] dark:text-[#daff41]" /> Official Resources & Verified Links
       </h2>
 
       {linkItems.length > 0 ? (
@@ -46,7 +46,7 @@ export const OfficialLinks: React.FC<OfficialLinksProps> = ({ links, coinName })
                   <Icon size={16} className={`${item.iconColor} shrink-0`} />
                   <span>{item.label}</span>
                 </span>
-                <ExternalLink size={14} className="text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ExternalLink size={14} className="text-slate-400 group-hover:text-[#455c00] dark:group-hover:text-[#daff41] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
             );
           })}

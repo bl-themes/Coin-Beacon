@@ -32,7 +32,7 @@ export const PriceOverviewCard: React.FC<PriceOverviewCardProps> = ({
     <section aria-labelledby="price-overview-heading" className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-4 shadow-sm dark:shadow-2xl">
       <div className="flex items-center justify-between mb-4">
         <h2 id="price-overview-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-          <Activity size={18} className="text-blue-500" /> Price & Market Overview
+          <Activity size={18} className="text-[#455c00] dark:text-[#daff41]" /> Price & Market Overview
         </h2>
         <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500 dark:text-slate-400">
           <Clock size={13} />
@@ -121,7 +121,7 @@ export const PriceOverviewCard: React.FC<PriceOverviewCardProps> = ({
         </div>
         <div className="relative w-full h-2 mt-0.5">
           <div
-            className="absolute top-0 -translate-x-1/2 w-3 h-3 bg-slate-900 dark:bg-white border-2 border-blue-500 rounded-full shadow-md"
+            className="absolute top-0 -translate-x-1/2 w-3 h-3 bg-slate-900 dark:bg-white border-2 border-[#daff41] rounded-full shadow-md"
             style={{ left: `${position}%` }}
           />
         </div>

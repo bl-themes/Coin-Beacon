@@ -87,7 +87,7 @@ export const TopMarketsSection: React.FC<TopMarketsSectionProps> = ({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 id="top-markets-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-            <Building2 size={18} className="text-blue-500" /> Top Markets & Liquidity
+            <Building2 size={18} className="text-[#455c00] dark:text-[#daff41]" /> Top Markets & Liquidity
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Primary global spot and decentralized exchange order books for {coinName}.
@@ -121,7 +121,7 @@ export const TopMarketsSection: React.FC<TopMarketsSectionProps> = ({
                     {m.category}
                   </span>
                 </td>
-                <td className="py-3 px-3 font-mono text-blue-600 dark:text-blue-400 font-semibold">{m.pair}</td>
+                <td className="py-3 px-3 font-mono text-[#455c00] dark:text-[#daff41] font-bold">{m.pair}</td>
                 <td className="py-3 px-3 text-right font-mono font-bold text-slate-900 dark:text-white">{formatCurrency(m.price)}</td>
                 <td className="py-3 px-3 text-right font-mono text-slate-700 dark:text-slate-300">{formatCurrency(m.volume24hUsd, 0, true)}</td>
                 <td className="py-3 px-3 text-right font-mono text-slate-600 dark:text-slate-400">{m.volumeSharePct}%</td>

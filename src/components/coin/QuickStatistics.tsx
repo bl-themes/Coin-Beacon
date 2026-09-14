@@ -32,7 +32,7 @@ export const QuickStatistics: React.FC<QuickStatisticsProps> = ({
       value: `#${rank}`,
       sub: 'Top Tier Digital Asset',
       icon: Hash,
-      iconColor: 'text-blue-500',
+      iconColor: 'text-[#455c00] dark:text-[#daff41]',
     },
     {
       title: 'Circulating Supply',
@@ -90,7 +90,7 @@ export const QuickStatistics: React.FC<QuickStatisticsProps> = ({
   return (
     <section aria-labelledby="quick-stats-heading" className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-4 shadow-sm dark:shadow-2xl">
       <h2 id="quick-stats-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-4 flex items-center gap-2 font-sans">
-        <Award size={18} className="text-blue-500" /> Quick Statistics
+        <Award size={18} className="text-[#455c00] dark:text-[#daff41]" /> Quick Statistics
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -99,7 +99,7 @@ export const QuickStatistics: React.FC<QuickStatisticsProps> = ({
           return (
             <div
               key={idx}
-              className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 rounded-xl p-4 hover:border-blue-500/40 transition-all group"
+              className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 rounded-xl p-4 hover:border-[#daff41]/40 transition-all group"
             >
               <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 mb-2">
                 <span>{stat.title}</span>

@@ -53,9 +53,9 @@ export const CoinTable: React.FC<CoinTableProps> = ({
       return <ArrowUpDown size={11} className="opacity-40 hover:opacity-100 transition-opacity" />;
     }
     return sortOrder === 'asc' ? (
-      <ArrowUp size={12} className="text-blue-400 animate-in fade-in duration-150" />
+      <ArrowUp size={12} className="text-[#455c00] dark:text-[#daff41] animate-in fade-in duration-150" />
     ) : (
-      <ArrowDown size={12} className="text-blue-400 animate-in fade-in duration-150" />
+      <ArrowDown size={12} className="text-[#455c00] dark:text-[#daff41] animate-in fade-in duration-150" />
     );
   };
 
@@ -140,9 +140,9 @@ export const CoinTable: React.FC<CoinTableProps> = ({
                 setSelectedCategory(cat.id);
                 setCurrentPage(1);
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === cat.id
-                  ? 'bg-blue-600 text-white font-semibold shadow-lg shadow-blue-600/25 ring-1 ring-blue-400/40'
+                  ? 'bg-[#daff41] text-slate-950 shadow-md shadow-[#daff41]/25 ring-1 ring-[#daff41]/50'
                   : 'bg-slate-200/70 dark:bg-slate-900/60 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/80 dark:hover:bg-slate-800/80 border border-slate-300/80 dark:border-slate-800/70'
               }`}
             >
@@ -163,7 +163,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
                 setSearchTerm(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-9 pr-3 py-2 bg-white dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all font-sans"
+              className="w-full pl-9 pr-3 py-2 bg-white dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#daff41] focus:ring-1 focus:ring-[#daff41]/30 transition-all font-sans"
             />
           </div>
 
@@ -197,7 +197,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
               <th
                 onClick={() => handleSort('rank')}
                 className={`py-3.5 px-3 w-12 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors ${
-                  sortField === 'rank' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+                  sortField === 'rank' ? 'text-[#455c00] dark:text-[#daff41] font-bold' : ''
                 }`}
               >
                 <div className="flex items-center gap-1">
@@ -208,7 +208,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
               <th
                 onClick={() => handleSort('price')}
                 className={`py-3.5 px-4 text-right cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors ${
-                  sortField === 'price' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+                  sortField === 'price' ? 'text-[#455c00] dark:text-[#daff41] font-bold' : ''
                 }`}
               >
                 <div className="flex items-center justify-end gap-1">
@@ -218,7 +218,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
               <th
                 onClick={() => handleSort('change24h')}
                 className={`py-3.5 px-4 text-right cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors ${
-                  sortField === 'change24h' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+                  sortField === 'change24h' ? 'text-[#455c00] dark:text-[#daff41] font-bold' : ''
                 }`}
               >
                 <div className="flex items-center justify-end gap-1">
@@ -228,7 +228,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
               <th
                 onClick={() => handleSort('change7d')}
                 className={`py-3.5 px-4 text-right hidden sm:table-cell cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors ${
-                  sortField === 'change7d' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+                  sortField === 'change7d' ? 'text-[#455c00] dark:text-[#daff41] font-bold' : ''
                 }`}
               >
                 <div className="flex items-center justify-end gap-1">
@@ -238,7 +238,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
               <th
                 onClick={() => handleSort('marketCap')}
                 className={`py-3.5 px-4 text-right hidden lg:table-cell cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors ${
-                  sortField === 'marketCap' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+                  sortField === 'marketCap' ? 'text-[#455c00] dark:text-[#daff41] font-bold' : ''
                 }`}
               >
                 <div className="flex items-center justify-end gap-1">
@@ -248,7 +248,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
               <th
                 onClick={() => handleSort('volume')}
                 className={`py-3.5 px-4 text-right hidden xl:table-cell cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors ${
-                  sortField === 'volume' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+                  sortField === 'volume' ? 'text-[#455c00] dark:text-[#daff41] font-bold' : ''
                 }`}
               >
                 <div className="flex items-center justify-end gap-1">
@@ -325,13 +325,13 @@ export const CoinTable: React.FC<CoinTableProps> = ({
                         <img
                           src={coin.image}
                           alt={coin.name}
-                          className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 shrink-0 border border-slate-200 dark:border-slate-700/50 group-hover:border-blue-500/50 transition-colors"
+                          className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 shrink-0 border border-slate-200 dark:border-slate-700/50 group-hover:border-[#daff41]/60 transition-colors"
                           onError={(e) => {
                             (e.target as HTMLElement).style.display = 'none';
                           }}
                         />
                         <div className="min-w-0">
-                          <div className="font-semibold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate font-sans">
+                          <div className="font-semibold text-slate-900 dark:text-white text-sm group-hover:text-[#455c00] dark:group-hover:text-[#daff41] transition-colors truncate font-sans">
                             {coin.name}
                           </div>
                           <div className="flex items-center gap-1.5">
@@ -377,7 +377,7 @@ export const CoinTable: React.FC<CoinTableProps> = ({
                       {coin.max_supply || coin.total_supply ? (
                         <div className="w-24 ml-auto bg-slate-200 dark:bg-slate-900 h-1.5 rounded-full mt-1.5 overflow-hidden border border-slate-300 dark:border-slate-800">
                           <div
-                            className="bg-blue-600 dark:bg-blue-500 h-full rounded-full transition-all duration-300"
+                            className="bg-[#daff41] h-full rounded-full transition-all duration-300"
                             style={{
                               width: `${Math.min(
                                 100,

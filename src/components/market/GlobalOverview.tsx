@@ -141,7 +141,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
     <div className="bg-gradient-to-br from-white via-slate-50 to-blue-50/40 dark:from-[#121622] dark:via-[#141826] dark:to-[#0D1017] border border-slate-200 dark:border-slate-800/80 rounded-3xl p-6 sm:p-8 lg:p-10 my-6 shadow-xl dark:shadow-2xl relative z-30">
       {/* Background Glow Overlay Effects isolated in overflow-hidden container to avoid clipping search dropdown */}
       <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#daff41]/10 dark:bg-[#daff41]/5 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-3xl"></div>
       </div>
 
@@ -149,13 +149,13 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
       <div className="relative z-30 max-w-4xl">
         {/* Live Status Eyebrow */}
         <div className="flex flex-wrap items-center gap-3 mb-4">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-xs font-mono font-medium">
+          <div className="inline-flex items-center gap-2 bg-[#daff41]/20 dark:bg-[#daff41]/10 border border-[#daff41]/30 text-[#455c00] dark:text-[#daff41] px-3 py-1 rounded-full text-xs font-mono font-bold">
             <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
             <span>Live CoinGecko Data</span>
           </div>
 
           <div className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800/60">
-            <Clock size={12} className="text-blue-500 dark:text-blue-400" />
+            <Clock size={12} className="text-[#455c00] dark:text-[#daff41]" />
             <span>Updated {formatDate(data.updated_at * 1000)}</span>
           </div>
         </div>
@@ -176,11 +176,11 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
             <div
               className={`flex items-center gap-3 bg-white dark:bg-slate-900/90 border transition-all duration-200 rounded-2xl px-4 py-3.5 shadow-md dark:shadow-xl ${
                 isFocused
-                  ? 'border-blue-500 ring-2 ring-blue-500/20 bg-white dark:bg-slate-900'
+                  ? 'border-[#daff41] ring-2 ring-[#daff41]/20 bg-white dark:bg-slate-900'
                   : 'border-slate-300 dark:border-slate-800/80 hover:border-slate-400 dark:hover:border-slate-700'
               }`}
             >
-              <Search size={20} className={isFocused ? 'text-blue-500 dark:text-blue-400' : 'text-slate-400'} />
+              <Search size={20} className={isFocused ? 'text-[#455c00] dark:text-[#daff41]' : 'text-slate-400'} />
               <input
                 type="text"
                 placeholder="Search 10,000+ coins by name or ticker (e.g., Bitcoin, ETH, Solana)..."
@@ -192,7 +192,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
                 onFocus={() => setIsFocused(true)}
                 className="w-full bg-transparent text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none font-sans"
               />
-              {isSearching && <Loader2 size={18} className="text-blue-500 dark:text-blue-400 animate-spin shrink-0" />}
+              {isSearching && <Loader2 size={18} className="text-[#455c00] dark:text-[#daff41] animate-spin shrink-0" />}
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
@@ -211,7 +211,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
               <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-[#0E131F] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-150 max-h-80 overflow-y-auto">
                 {isSearching ? (
                   <div className="p-4 text-center text-xs text-slate-500 dark:text-slate-400 font-mono flex items-center justify-center gap-2">
-                    <Loader2 size={14} className="animate-spin text-blue-500 dark:text-blue-400" /> Searching CoinGecko markets...
+                    <Loader2 size={14} className="animate-spin text-[#455c00] dark:text-[#daff41]" /> Searching CoinGecko markets...
                   </div>
                 ) : searchResults.coins.length > 0 ? (
                   <div className="p-2 divide-y divide-slate-100 dark:divide-slate-800/60">
@@ -226,7 +226,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
                           onClick={() => handleCoinClick(coin.id)}
                           className={`flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer group ${
                             isSelected
-                              ? 'bg-blue-50 dark:bg-slate-800/90 border border-blue-200 dark:border-slate-700'
+                              ? 'bg-[#daff41]/15 dark:bg-slate-800/90 border border-[#daff41]/40 dark:border-[#daff41]/40'
                               : 'hover:bg-slate-100 dark:hover:bg-slate-800/60 border border-transparent'
                           }`}
                         >
@@ -240,7 +240,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
                               }}
                             />
                             <div>
-                              <div className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                              <div className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-[#455c00] dark:group-hover:text-[#daff41] transition-colors">
                                 {coin.name}
                               </div>
                               <div className="text-xs font-mono text-slate-500 dark:text-slate-400 uppercase">
@@ -248,7 +248,7 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
                               </div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity font-mono">
+                          <div className="flex items-center gap-1 text-xs text-[#455c00] dark:text-[#daff41] opacity-0 group-hover:opacity-100 transition-opacity font-mono">
                             <span>View detail</span>
                             <ArrowRight size={12} />
                           </div>
@@ -285,10 +285,10 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
       {/* Global Market Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 relative z-0">
         {/* Total Market Cap Card */}
-        <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-blue-500/40 transition-all group shadow-sm dark:shadow-none">
+        <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-[#daff41]/50 transition-all group shadow-sm dark:shadow-none">
           <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
             <span className="uppercase tracking-wider font-semibold font-mono text-[11px]">Total Market Cap</span>
-            <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-xl bg-[#daff41]/20 border border-[#daff41]/40 text-[#455c00] dark:text-[#daff41] flex items-center justify-center group-hover:scale-105 transition-transform font-bold">
               <Coins size={16} />
             </div>
           </div>
@@ -336,18 +336,18 @@ export const GlobalOverview: React.FC<GlobalOverviewProps> = ({
         </div>
 
         {/* Ethereum Dominance Card */}
-        <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-blue-500/40 transition-all group shadow-sm dark:shadow-none">
+        <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-[#daff41]/50 transition-all group shadow-sm dark:shadow-none">
           <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
             <span className="uppercase tracking-wider font-semibold font-mono text-[11px]">ETH Dominance</span>
-            <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-xl bg-[#daff41]/20 border border-[#daff41]/40 text-[#455c00] dark:text-[#daff41] flex items-center justify-center group-hover:scale-105 transition-transform font-bold">
               <Zap size={16} />
             </div>
           </div>
-          <div className="text-2xl font-bold font-mono text-blue-600 dark:text-blue-400 tracking-tight">
+          <div className="text-2xl font-bold font-mono text-[#455c00] dark:text-[#daff41] tracking-tight">
             {ethDom.toFixed(1)}%
           </div>
           <div className="w-full bg-slate-200 dark:bg-slate-800/80 h-1.5 rounded-full mt-3 overflow-hidden">
-            <div className="bg-blue-600 dark:bg-blue-500 h-full rounded-full transition-all duration-500" style={{ width: `${Math.min(100, ethDom)}%` }}></div>
+            <div className="bg-[#daff41] h-full rounded-full transition-all duration-500" style={{ width: `${Math.min(100, ethDom)}%` }}></div>
           </div>
         </div>
       </div>

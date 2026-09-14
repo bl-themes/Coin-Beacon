@@ -27,7 +27,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
         <React.Fragment key={idx}>
           <ChevronRight size={12} className="text-slate-400 dark:text-gray-600 shrink-0" />
           {item.active ? (
-            <span className="text-blue-600 dark:text-blue-400 font-medium font-mono">{item.label}</span>
+            <span className="text-[#455c00] dark:text-[#daff41] font-bold font-mono">{item.label}</span>
           ) : (
             <button
               onClick={item.onClick}

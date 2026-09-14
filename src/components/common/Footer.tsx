@@ -24,11 +24,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-lg bg-[#daff41] flex items-center justify-center text-slate-950 font-black shadow-md shadow-[#daff41]/20">
                 <Compass size={18} />
               </div>
               <span className="text-xl font-bold font-mono text-slate-900 dark:text-white tracking-tight">
-                Coin<span className="text-blue-600 dark:text-blue-500">Beacon</span>
+                Coin<span className="text-[#455c00] dark:text-[#daff41]">Beacon</span>
               </span>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 text-xs font-mono text-green-600 dark:text-green-500">
                 <ShieldCheck size={13} /> SSL Secured
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 text-xs font-mono text-blue-600 dark:text-blue-400">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/60 text-xs font-mono text-[#455c00] dark:text-[#daff41]">
                 <Zap size={13} /> Low Latency
               </span>
             </div>
@@ -51,27 +51,27 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => onSelectView('coins')} className="hover:text-blue-600 dark:hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => onSelectView('coins')} className="hover:text-[#455c00] dark:hover:text-[#daff41] transition-colors cursor-pointer">
                   Top 100 Cryptocurrencies
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectView('categories')} className="hover:text-blue-600 dark:hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => onSelectView('categories')} className="hover:text-[#455c00] dark:hover:text-[#daff41] transition-colors cursor-pointer">
                   Crypto Categories
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectView('watchlist')} className="hover:text-blue-600 dark:hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => onSelectView('watchlist')} className="hover:text-[#455c00] dark:hover:text-[#daff41] transition-colors cursor-pointer">
                   Personal Watchlist
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectView('news')} className="hover:text-blue-600 dark:hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => onSelectView('news')} className="hover:text-[#455c00] dark:hover:text-[#daff41] transition-colors cursor-pointer">
                   Market News & Analysis
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectView('learn')} className="hover:text-blue-600 dark:hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => onSelectView('learn')} className="hover:text-[#455c00] dark:hover:text-[#daff41] transition-colors cursor-pointer">
                   CoinBeacon Academy
                 </button>
               </li>
@@ -122,11 +122,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView }) => {
                   placeholder="Enter institutional email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-800/60 rounded-lg text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-800/60 rounded-lg text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#daff41] transition-colors"
                 />
                 <button
                   type="submit"
-                  className="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full py-2 bg-[#daff41] hover:bg-[#cbf232] text-slate-950 font-bold rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md shadow-[#daff41]/20"
                 >
                   <Send size={12} /> Join Newsletter
                 </button>

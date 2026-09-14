@@ -1,6 +1,5 @@
 import express, { Request, Response as ExpressResponse } from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import {
@@ -10,9 +9,6 @@ import {
   FALLBACK_LEARN_ARTICLES,
   FALLBACK_CATEGORIES,
 } from './src/constants/fallbackData.ts';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;

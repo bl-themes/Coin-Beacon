@@ -24,7 +24,7 @@ export const CoinDescription: React.FC<CoinDescriptionProps> = ({ coin }) => {
     <section aria-labelledby="coin-description-heading" className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-4 shadow-sm dark:shadow-2xl">
       <div className="flex items-center justify-between mb-4">
         <h2 id="coin-description-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-          <BookOpen size={18} className="text-blue-500" /> About {coin.name} ({coin.symbol.toUpperCase()})
+          <BookOpen size={18} className="text-[#455c00] dark:text-[#daff41]" /> About {coin.name} ({coin.symbol.toUpperCase()})
         </h2>
         {coin.genesis_date && (
           <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500 dark:text-slate-400">
@@ -44,7 +44,7 @@ export const CoinDescription: React.FC<CoinDescriptionProps> = ({ coin }) => {
               <button
                 onClick={() => setExpanded(!expanded)}
                 aria-expanded={expanded}
-                className="mt-2 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-500 flex items-center gap-1 cursor-pointer transition-colors"
+                className="mt-2 text-xs font-bold text-[#455c00] dark:text-[#daff41] hover:underline flex items-center gap-1 cursor-pointer transition-colors"
               >
                 {expanded ? (
                   <>

@@ -3,8 +3,6 @@
 @variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
   :root {
     --bg-primary: #f8fafc;
     --bg-secondary: #ffffff;
@@ -14,7 +12,8 @@
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #94a3b8;
-    --accent-blue: #3b82f6;
+    --accent-blue: #daff41;
+    --color-accent: #daff41;
     --accent-green: #10b981;
     --accent-red: #ef4444;
   }
@@ -62,7 +61,7 @@
   background: #273549;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #daff41;
 }
 
 /* Animations & glass-free clean UI */
@@ -77,4 +76,25 @@
 
 .animate-pulse-slow {
   animation: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Continuous Horizontal Ticker Tape Animation */
+@keyframes tickerScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker-marquee {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-marquee:hover {
+  animation-play-state: paused;
 }

@@ -49,7 +49,7 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
   return (
     <header className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-4 shadow-sm dark:shadow-2xl relative overflow-hidden">
       {/* Background ambient glow */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[#daff41]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Share Toast Notification */}
       {shareToast && (
@@ -74,7 +74,7 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
               <span className="text-xs font-mono font-bold uppercase text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/60 px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-800">
                 {coin.symbol}
               </span>
-              <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-200 dark:border-blue-500/20">
+              <span className="text-xs font-mono font-bold text-[#455c00] dark:text-[#daff41] bg-[#daff41]/20 dark:bg-[#daff41]/10 px-2.5 py-1 rounded-md border border-[#daff41]/40">
                 Rank #{rank}
               </span>
             </div>
@@ -96,7 +96,7 @@ export const CoinHeader: React.FC<CoinHeaderProps> = ({
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between lg:justify-end gap-5 border-t lg:border-t-0 pt-4 lg:pt-0 border-slate-200 dark:border-slate-800/60">
           <div>
             <div className="text-[10px] uppercase font-mono tracking-wider text-slate-500 dark:text-slate-400 mb-1 flex items-center gap-1">
-              <Sparkles size={12} className="text-blue-500" /> Live Market Price (USD)
+              <Sparkles size={12} className="text-[#455c00] dark:text-[#daff41]" /> Live Market Price (USD)
             </div>
             <div className="flex items-baseline gap-3">
               <span className="text-3xl sm:text-4xl font-extrabold font-mono text-slate-900 dark:text-white tracking-tight">

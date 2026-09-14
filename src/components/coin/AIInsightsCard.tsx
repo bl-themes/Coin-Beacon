@@ -54,12 +54,12 @@ export const AIInsightsCard: React.FC<AIInsightsCardProps> = ({
 
   return (
     <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 dark:from-blue-600/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-500/20 rounded-2xl p-6 my-6 shadow-sm dark:shadow-2xl relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-48 h-48 bg-[#daff41]/10 rounded-full blur-3xl pointer-events-none"></div>
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 border-b border-slate-200 dark:border-slate-800/60 pb-4">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-600/30 border border-blue-200 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+          <div className="w-9 h-9 rounded-xl bg-[#daff41]/20 dark:bg-[#daff41]/10 border border-[#daff41]/30 text-[#455c00] dark:text-[#daff41] flex items-center justify-center">
             <Cpu size={20} className="animate-pulse" />
           </div>
           <div>
@@ -104,7 +104,7 @@ export const AIInsightsCard: React.FC<AIInsightsCardProps> = ({
             </span>
 
             <span className="text-xs font-mono text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900/50 px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none">
-              AI Confidence: <strong className="text-blue-600 dark:text-blue-400">{analysis.confidenceScore}%</strong>
+              AI Confidence: <strong className="text-[#455c00] dark:text-[#daff41]">{analysis.confidenceScore}%</strong>
             </span>
           </div>
 
@@ -153,7 +153,7 @@ export const AIInsightsCard: React.FC<AIInsightsCardProps> = ({
           {/* Technical Outlook */}
           {analysis.technicalOutlook && (
             <div className="bg-white/80 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/60 rounded-xl p-3 text-xs text-slate-600 dark:text-slate-400 flex items-center gap-2 font-mono shadow-xs dark:shadow-none">
-              <TrendingUp size={14} className="text-blue-600 dark:text-blue-400 shrink-0" />
+              <TrendingUp size={14} className="text-[#455c00] dark:text-[#daff41] shrink-0" />
               <span>
                 <strong className="text-slate-900 dark:text-slate-200">Technical Momentum:</strong> {analysis.technicalOutlook}
               </span>

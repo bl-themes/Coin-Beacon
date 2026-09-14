@@ -25,7 +25,7 @@ export const PricePerformance: React.FC<PricePerformanceProps> = ({ marketData }
   return (
     <section aria-labelledby="price-performance-heading" className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-4 shadow-sm dark:shadow-2xl">
       <h2 id="price-performance-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-4 flex items-center gap-2 font-sans">
-        <Gauge size={18} className="text-blue-500" /> Price Performance Matrix
+        <Gauge size={18} className="text-[#455c00] dark:text-[#daff41]" /> Price Performance Matrix
       </h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
@@ -34,7 +34,7 @@ export const PricePerformance: React.FC<PricePerformanceProps> = ({ marketData }
           return (
             <div
               key={idx}
-              className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 rounded-xl p-4 text-center hover:border-blue-500/30 transition-all"
+              className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 rounded-xl p-4 text-center hover:border-[#daff41]/40 transition-all"
             >
               <span className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">
                 {h.label}

@@ -78,7 +78,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <h2 id="interactive-chart-heading" className="text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-              <BarChart2 size={18} className="text-blue-500" /> {coinName} Interactive Price Chart
+              <BarChart2 size={18} className="text-[#455c00] dark:text-[#daff41]" /> {coinName} Interactive Price Chart
             </h2>
             <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md flex items-center gap-1 ${
               isRangePositive
@@ -104,7 +104,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
               aria-label={`Show ${r} chart data`}
               className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                 range === r
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                  ? 'bg-[#daff41] text-slate-950 shadow-md shadow-[#daff41]/30'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
             >
@@ -124,7 +124,7 @@ export const PriceChart: React.FC<PriceChartProps> = ({
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">CoinGecko market chart service might be undergoing temporary rate limits.</p>
           <button
             onClick={loadChart}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold text-xs hover:bg-blue-500 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#daff41] hover:bg-[#cbf232] text-slate-950 font-bold text-xs transition-colors cursor-pointer shadow-md shadow-[#daff41]/20"
           >
             <RefreshCw size={14} /> Retry Loading Chart
           </button>

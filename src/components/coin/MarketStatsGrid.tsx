@@ -32,7 +32,7 @@ export const MarketStatsGrid: React.FC<MarketStatsGridProps> = ({ marketData, sy
   return (
     <div className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 my-6 shadow-sm dark:shadow-2xl">
       <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-4 flex items-center gap-2 font-sans">
-        <Activity size={18} className="text-blue-500" /> Market Capitalization & Valuation Stats
+        <Activity size={18} className="text-[#455c00] dark:text-[#daff41]" /> Market Capitalization & Valuation Stats
       </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -79,7 +79,7 @@ export const MarketStatsGrid: React.FC<MarketStatsGridProps> = ({ marketData, sy
         {/* Supply Details */}
         <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/40 rounded-xl p-5 space-y-3">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 font-mono flex items-center gap-1.5">
-            <Database size={14} className="text-blue-500 dark:text-blue-400" /> Token Supply Dynamics
+            <Database size={14} className="text-[#455c00] dark:text-[#daff41]" /> Token Supply Dynamics
           </h4>
 
           <div className="flex justify-between text-xs py-1 border-b border-slate-200 dark:border-slate-800/40">

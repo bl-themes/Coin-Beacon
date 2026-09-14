@@ -77,12 +77,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => handleNavClick('home')}
               className="flex items-center gap-2.5 text-left group cursor-pointer"
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-md shadow-blue-600/30 group-hover:scale-105 transition-transform">
+              <div className="w-8 h-8 bg-[#daff41] rounded-lg flex items-center justify-center text-slate-950 font-black shadow-md shadow-[#daff41]/20 group-hover:scale-105 transition-transform">
                 <Compass size={18} />
               </div>
               <div>
                 <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1 font-sans">
-                  Coin<span className="text-blue-600 dark:text-blue-500">Beacon</span>
+                  Coin<span className="text-[#455c00] dark:text-[#daff41]">Beacon</span>
                 </span>
               </div>
             </button>
@@ -98,13 +98,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => handleNavClick(item.id)}
                     className={`flex items-center gap-1.5 transition-colors cursor-pointer relative ${
                       isActive
-                        ? 'text-blue-600 dark:text-blue-500 font-semibold'
+                        ? 'text-[#455c00] dark:text-[#daff41] font-semibold'
                         : 'hover:text-slate-900 dark:hover:text-slate-200'
                     }`}
                   >
                     <span>{item.label}</span>
                     {item.badge !== undefined && (
-                      <span className="ml-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[10px] font-mono font-bold">
+                      <span className="ml-1 px-1.5 py-0.2 rounded-full bg-[#daff41] text-slate-950 text-[10px] font-mono font-bold">
                         {item.badge}
                       </span>
                     )}
@@ -171,14 +171,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleNavClick(item.id)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                     isActive
-                      ? 'text-blue-600 dark:text-white bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/30'
+                      ? 'text-[#455c00] dark:text-[#daff41] bg-[#daff41]/20 dark:bg-[#daff41]/15 border border-[#daff41]/40'
                       : 'text-slate-700 dark:text-gray-300 bg-slate-100 dark:bg-[#161e2e] border border-slate-200 dark:border-[#232d3f]'
                   }`}
                 >
-                  <Icon size={16} className={isActive ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400'} />
+                  <Icon size={16} className={isActive ? 'text-[#455c00] dark:text-[#daff41]' : 'text-slate-400'} />
                   <span>{item.label}</span>
                   {item.badge !== undefined && (
-                    <span className="ml-auto px-1.5 py-0.5 rounded-full bg-blue-600 text-white text-xs font-bold font-mono">
+                    <span className="ml-auto px-1.5 py-0.5 rounded-full bg-[#daff41] text-slate-950 text-xs font-bold font-mono">
                       {item.badge}
                     </span>
                   )}

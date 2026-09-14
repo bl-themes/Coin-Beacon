@@ -29,7 +29,7 @@ export const MarketAndSupplyStats: React.FC<MarketAndSupplyStatsProps> = ({
       {/* Market Statistics Section */}
       <section aria-labelledby="market-stats-heading" className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 shadow-sm dark:shadow-2xl">
         <h2 id="market-stats-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-4 flex items-center gap-2 font-sans">
-          <PieChart size={18} className="text-blue-500" /> Market Statistics
+          <PieChart size={18} className="text-[#455c00] dark:text-[#daff41]" /> Market Statistics
         </h2>
 
         <div className="space-y-3.5">
@@ -38,7 +38,7 @@ export const MarketAndSupplyStats: React.FC<MarketAndSupplyStatsProps> = ({
               <span className="text-xs text-slate-500 dark:text-slate-400 font-mono block">Market Capitalization</span>
               <span className="text-sm sm:text-base font-bold font-mono text-slate-900 dark:text-white">{formatCurrency(marketCap, 0, true)}</span>
             </div>
-            <Zap size={18} className="text-blue-500" />
+            <Zap size={18} className="text-[#455c00] dark:text-[#daff41]" />
           </div>
 
           <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50">
@@ -101,7 +101,7 @@ export const MarketAndSupplyStats: React.FC<MarketAndSupplyStatsProps> = ({
 
           <div className="flex items-center justify-between text-xs font-mono pt-1 text-slate-500 dark:text-slate-400">
             <span>Verified Supply Ratio</span>
-            <span className="text-blue-600 dark:text-blue-400 font-bold">
+            <span className="text-[#455c00] dark:text-[#daff41] font-bold">
               {circulatingPctOfMax !== null ? `${circulatingPctOfMax}% Circulating` : `${circulatingPctOfTotal}% Minted`}
             </span>
           </div>

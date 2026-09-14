@@ -108,7 +108,7 @@ export const WatchlistView: React.FC<WatchlistViewProps> = ({
 
               <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono pt-3 border-t border-slate-200 dark:border-slate-800/60">
                 <span>Cap: {formatCurrency(coin.market_cap, 0, true)}</span>
-                <span className="text-blue-600 dark:text-blue-400 font-medium group-hover:underline flex items-center gap-1">
+                <span className="text-[#455c00] dark:text-[#daff41] font-semibold group-hover:underline flex items-center gap-1">
                   View Detail <ArrowRight size={12} />
                 </span>
               </div>

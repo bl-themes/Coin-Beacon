@@ -20,14 +20,14 @@ export const LearnSection: React.FC = () => {
 
   const levelColors = {
     Beginner: 'text-emerald-700 bg-emerald-500/10 border-emerald-500/30 dark:text-emerald-400',
-    Intermediate: 'text-blue-700 bg-blue-500/10 border-blue-500/30 dark:text-blue-400',
+    Intermediate: 'text-[#455c00] bg-[#daff41]/20 border-[#daff41]/40 dark:text-[#daff41]',
     Advanced: 'text-purple-700 bg-purple-500/10 border-purple-500/30 dark:text-purple-400',
   };
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'BookOpen':
-        return <BookOpen size={20} className="text-blue-600 dark:text-blue-400" />;
+        return <BookOpen size={20} className="text-[#455c00] dark:text-[#daff41]" />;
       case 'Layers':
         return <Layers size={20} className="text-indigo-600 dark:text-indigo-400" />;
       case 'Shield':
@@ -35,7 +35,7 @@ export const LearnSection: React.FC = () => {
       case 'TrendingUp':
         return <TrendingUp size={20} className="text-amber-600 dark:text-amber-400" />;
       default:
-        return <BookOpen size={20} className="text-blue-600 dark:text-blue-400" />;
+        return <BookOpen size={20} className="text-[#455c00] dark:text-[#daff41]" />;
     }
   };
 
@@ -43,7 +43,7 @@ export const LearnSection: React.FC = () => {
     <div className="my-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-          <BookOpen size={24} className="text-blue-500" /> CoinBeacon Academy
+          <BookOpen size={24} className="text-[#455c00] dark:text-[#daff41]" /> CoinBeacon Academy
         </h2>
         <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
           Master cryptocurrency fundamentals, decentralized protocols, security paradigms, and macro market cycles.
@@ -62,7 +62,7 @@ export const LearnSection: React.FC = () => {
             <div
               key={art.id}
               onClick={() => setSelectedArticle(art)}
-              className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 hover:border-blue-500/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all cursor-pointer flex flex-col justify-between group shadow-sm dark:shadow-2xl"
+              className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 hover:border-[#daff41]/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all cursor-pointer flex flex-col justify-between group shadow-sm dark:shadow-2xl"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -78,7 +78,7 @@ export const LearnSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug mb-2 font-sans">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#455c00] dark:group-hover:text-[#daff41] transition-colors leading-snug mb-2 font-sans">
                   {art.title}
                 </h3>
 
@@ -91,7 +91,7 @@ export const LearnSection: React.FC = () => {
                 <span className="flex items-center gap-1">
                   <Clock size={12} /> {art.readTime}
                 </span>
-                <span className="text-blue-600 dark:text-blue-400 font-medium group-hover:underline flex items-center gap-1">
+                <span className="text-[#455c00] dark:text-[#daff41] font-semibold group-hover:underline flex items-center gap-1">
                   Read Article <ArrowRight size={12} />
                 </span>
               </div>
@@ -146,7 +146,7 @@ export const LearnSection: React.FC = () => {
             <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/60 flex justify-end">
               <button
                 onClick={() => setSelectedArticle(null)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-medium transition-colors cursor-pointer"
+                className="px-4 py-2 bg-[#daff41] hover:bg-[#cbf232] text-slate-950 font-bold rounded-xl text-xs transition-colors cursor-pointer"
               >
                 Close Article
               </button>

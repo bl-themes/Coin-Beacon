@@ -44,7 +44,7 @@ export const LanguageSelector: React.FC = () => {
                   }}
                   className={`px-2 py-1 rounded text-xs font-mono transition-colors ${
                     currency === curr
-                      ? 'bg-blue-600 text-white font-bold'
+                      ? 'bg-[#daff41] text-slate-950 font-bold'
                       : 'bg-slate-100 hover:bg-slate-200 dark:bg-[#111827] text-slate-700 dark:text-gray-300 dark:hover:bg-[#1f293d]'
                   }`}
                 >
@@ -68,7 +68,7 @@ export const LanguageSelector: React.FC = () => {
                   }}
                   className={`w-full text-left px-2 py-1 rounded text-xs flex justify-between items-center transition-colors ${
                     language === lang.code
-                      ? 'bg-blue-50 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 font-medium'
+                      ? 'bg-[#daff41]/20 dark:bg-[#daff41]/15 text-[#455c00] dark:text-[#daff41] font-bold'
                       : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-[#1f293d]'
                   }`}
                 >

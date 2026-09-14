@@ -77,7 +77,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
             onChange={(e) => setQuery(e.target.value)}
             className="w-full bg-transparent text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none font-sans"
           />
-          {loading && <Loader2 size={16} className="text-blue-500 animate-spin shrink-0" />}
+          {loading && <Loader2 size={16} className="text-[#455c00] dark:text-[#daff41] animate-spin shrink-0" />}
           {query && (
             <button
               onClick={() => setQuery('')}
@@ -148,7 +148,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
                           Rank #{coin.market_cap_rank}
                         </span>
                       )}
-                      <ArrowRight size={14} className="text-slate-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
+                      <ArrowRight size={14} className="text-slate-400 dark:text-gray-500 group-hover:text-[#455c00] dark:group-hover:text-[#daff41] group-hover:translate-x-0.5 transition-all" />
                     </div>
                   </button>
                 ))}
@@ -167,7 +167,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
                     key={cat.id}
                     className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#161e2e] border border-slate-200 dark:border-[#232d3f] text-xs font-medium text-slate-700 dark:text-gray-300 flex items-center gap-1.5"
                   >
-                    <Layers size={12} className="text-blue-600 dark:text-blue-400" />
+                    <Layers size={12} className="text-[#455c00] dark:text-[#daff41]" />
                     {cat.name}
                   </span>
                 ))}

@@ -76,7 +76,7 @@ export const CoinFAQSection: React.FC<CoinFAQSectionProps> = ({ coin }) => {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 id="faq-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-            <HelpCircle size={18} className="text-blue-500" /> Frequently Asked Questions about {coin.name}
+            <HelpCircle size={18} className="text-[#455c00] dark:text-[#daff41]" /> Frequently Asked Questions about {coin.name}
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Key information, price statistics, and historical background.
@@ -97,10 +97,10 @@ export const CoinFAQSection: React.FC<CoinFAQSectionProps> = ({ coin }) => {
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${idx}`}
                 id={`faq-question-${idx}`}
-                className="w-full flex items-center justify-between p-4 text-left font-semibold text-xs sm:text-sm text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between p-4 text-left font-semibold text-xs sm:text-sm text-slate-900 dark:text-white hover:text-[#455c00] dark:hover:text-[#daff41] transition-colors cursor-pointer"
               >
                 <span>{faq.question}</span>
-                {isOpen ? <ChevronUp size={16} className="text-blue-500 shrink-0" /> : <ChevronDown size={16} className="text-slate-400 shrink-0" />}
+                {isOpen ? <ChevronUp size={16} className="text-[#455c00] dark:text-[#daff41] shrink-0" /> : <ChevronDown size={16} className="text-slate-400 shrink-0" />}
               </button>
 
               {isOpen && (

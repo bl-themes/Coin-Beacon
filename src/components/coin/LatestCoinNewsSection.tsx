@@ -55,7 +55,7 @@ export const LatestCoinNewsSection: React.FC<LatestCoinNewsSectionProps> = ({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 id="latest-news-heading" className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-            <Newspaper size={18} className="text-blue-500" /> Latest {coinName} News & Analysis
+            <Newspaper size={18} className="text-[#455c00] dark:text-[#daff41]" /> Latest {coinName} News & Analysis
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Curated market news, protocol updates, and institutional coverage.
@@ -70,7 +70,7 @@ export const LatestCoinNewsSection: React.FC<LatestCoinNewsSectionProps> = ({
             href={news.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 hover:border-blue-500/40 rounded-xl p-4 flex flex-col justify-between transition-all group cursor-pointer"
+            className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 hover:border-[#daff41]/40 rounded-xl p-4 flex flex-col justify-between transition-all group cursor-pointer"
           >
             <div>
               <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-2">
@@ -83,7 +83,7 @@ export const LatestCoinNewsSection: React.FC<LatestCoinNewsSectionProps> = ({
                   {news.sentiment}
                 </span>
               </div>
-              <h3 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 mb-2">
+              <h3 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#455c00] dark:group-hover:text-[#daff41] transition-colors line-clamp-2 mb-2">
                 {news.title}
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
@@ -95,7 +95,7 @@ export const LatestCoinNewsSection: React.FC<LatestCoinNewsSectionProps> = ({
               <span className="flex items-center gap-1">
                 <Clock size={12} /> {news.timeAgo}
               </span>
-              <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold group-hover:underline">
+              <span className="flex items-center gap-1 text-[#455c00] dark:text-[#daff41] font-semibold group-hover:underline">
                 Read article <ExternalLink size={12} />
               </span>
             </div>

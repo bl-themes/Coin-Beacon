@@ -52,7 +52,7 @@ export const CoinDetailView: React.FC<CoinDetailViewProps> = ({
         {onRetry && (
           <button
             onClick={onRetry}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs hover:bg-blue-500 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#daff41] hover:bg-[#cbf232] text-slate-950 font-bold text-xs transition-colors cursor-pointer shadow-md shadow-[#daff41]/20"
           >
             <RefreshCw size={14} /> Retry Loading Coin
           </button>

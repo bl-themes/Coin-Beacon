@@ -22,7 +22,7 @@ export const NewsSection: React.FC = () => {
     <div className="my-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-          <Newspaper size={24} className="text-blue-500" /> Cryptocurrency News & Market Intelligence
+          <Newspaper size={24} className="text-[#455c00] dark:text-[#daff41]" /> Cryptocurrency News & Market Intelligence
         </h2>
         <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
           Curated institutional breaking news, macroeconomic policy, and technological developments.
@@ -47,11 +47,11 @@ export const NewsSection: React.FC = () => {
             return (
               <article
                 key={item.id}
-                className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 hover:border-blue-500/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all flex flex-col justify-between group shadow-sm dark:shadow-2xl"
+                className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-6 hover:border-[#daff41]/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all flex flex-col justify-between group shadow-sm dark:shadow-2xl"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-wider flex items-center gap-1">
+                    <span className="text-xs font-mono text-[#455c00] dark:text-[#daff41] font-semibold uppercase tracking-wider flex items-center gap-1">
                       <Tag size={12} /> {item.category}
                     </span>
                     {item.sentiment && (
@@ -65,7 +65,7 @@ export const NewsSection: React.FC = () => {
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug mb-2 font-sans">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#455c00] dark:group-hover:text-[#daff41] transition-colors leading-snug mb-2 font-sans">
                     {item.title}
                   </h3>
 

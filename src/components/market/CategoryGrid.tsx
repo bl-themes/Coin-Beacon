@@ -14,7 +14,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onSelect
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 font-sans">
-            <Layers size={20} className="text-blue-500" /> Crypto Sectors & Categories
+            <Layers size={20} className="text-[#455c00] dark:text-[#daff41]" /> Crypto Sectors & Categories
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-400 mt-0.5">
             Track capital allocation across major cryptocurrency market sectors.
@@ -29,10 +29,10 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ categories, onSelect
             <div
               key={cat.id}
               onClick={() => onSelectCategory && onSelectCategory(cat.id)}
-              className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-blue-500/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all cursor-pointer group shadow-xs dark:shadow-none"
+              className="bg-white dark:bg-[#14171F] border border-slate-200 dark:border-slate-800/60 rounded-2xl p-5 hover:border-[#daff41]/40 hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-all cursor-pointer group shadow-xs dark:shadow-none"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-slate-900 dark:text-white text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <span className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#455c00] dark:group-hover:text-[#daff41] transition-colors">
                   {cat.name}
                 </span>
                 <span
